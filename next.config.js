@@ -10,10 +10,9 @@ const nextConfig = {
     esmExternals: 'loose'
   },
   webpack: (config) => {
-    config.externals = [...config.externals, { canvas: "canvas" }]; // required to make pdfjs work
+    config.externals = [...config.externals, { canvas: "canvas" }];
     return config;
   },
-  trailingSlash: true,
 };
 
 module.exports = nextConfig;
