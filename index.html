@@ -2,33 +2,6 @@
 import React from "react";
 
 function MainComponent() {
-  const [remainingTime, setRemainingTime] = useState("");
-  const presaleStats = {
-    totalSupply: "1,000,000,000",
-    soldTokens: "650,000,000",
-    initialPrice: "$0.001",
-    launchDate: "Soon !!",
-  };
-
-  useEffect(() => {
-    const endDate = new Date("2025-03-15").getTime();
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = endDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      setRemainingTime(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white font-poppins">
       <header className="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-[#2a2a2a]">
@@ -63,6 +36,7 @@ function MainComponent() {
             community-driven innovation
           </p>
         </section>
+
         <section className="container mx-auto px-4 py-12">
           <div className="max-w-lg mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-6">
@@ -83,19 +57,19 @@ function MainComponent() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a]">
               <p className="text-gray-400">Total Supply</p>
-              <p className="text-xl font-bold">{presaleStats.totalSupply}</p>
+              <p className="text-xl font-bold">1,000,000,000</p>
             </div>
             <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a]">
               <p className="text-gray-400">Tokens Sold</p>
-              <p className="text-xl font-bold">{presaleStats.soldTokens}</p>
+              <p className="text-xl font-bold">650,000,000</p>
             </div>
             <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a]">
               <p className="text-gray-400">Initial Price</p>
-              <p className="text-xl font-bold">{presaleStats.initialPrice}</p>
+              <p className="text-xl font-bold">$0.001</p>
             </div>
             <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a]">
               <p className="text-gray-400">Launch Date</p>
-              <p className="text-xl font-bold">{presaleStats.launchDate}</p>
+              <p className="text-xl font-bold">Soon !!</p>
             </div>
           </div>
         </section>
