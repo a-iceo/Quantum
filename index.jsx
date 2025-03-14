@@ -2,6 +2,33 @@
 import React from "react";
 
 function MainComponent() {
+  const [remainingTime, setRemainingTime] = useState("");
+  const presaleStats = {
+    totalSupply: "1,000,000,000",
+    soldTokens: "650,000,000",
+    initialPrice: "$0.001",
+    launchDate: "Soon !!",
+  };
+
+  useEffect(() => {
+    const endDate = new Date("2025-03-15").getTime();
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setRemainingTime(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white font-poppins">
       <header className="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-[#2a2a2a]">
@@ -10,9 +37,8 @@ function MainComponent() {
             Quantum Meme
           </div>
           <a
-            href="https://t.me/+-rNpNrQ7uyo3N2Mx"
+            href="https://t.me/+DjV9udmqSNAwNDMx"
             target="_blank"
-            rel="noopener noreferrer"
             className="bg-gradient-to-r from-[#ff3366] to-[#9933ff] px-6 py-2 rounded-full text-sm hover:opacity-90"
           >
             Join Telegram
@@ -25,7 +51,7 @@ function MainComponent() {
           <div className="w-[200px] h-[200px] mx-auto mb-8 bg-gradient-to-r from-[#ff3366] to-[#9933ff] rounded-full flex items-center justify-center overflow-hidden">
             <img
               src="https://ucarecdn.com/22aa11cd-4a7d-4d91-877d-0eb38adbd797/-/format/auto/"
-              alt="Quantum Meme Logo"
+              alt="Quantum Meme Mascot"
               className="w-full h-full object-cover"
             />
           </div>
@@ -45,7 +71,6 @@ function MainComponent() {
             <a
               href="https://t.me/+DjV9udmqSNAwNDMx"
               target="_blank"
-              rel="noopener noreferrer"
               className="inline-block bg-gradient-to-r from-[#ff3366] to-[#9933ff] px-12 py-4 rounded-xl text-xl font-bold hover:opacity-90 transition-all transform hover:scale-105"
             >
               Join Telegram
@@ -58,19 +83,19 @@ function MainComponent() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a]">
               <p className="text-gray-400">Total Supply</p>
-              <p className="text-xl font-bold">1,000,000,000</p>
+              <p className="text-xl font-bold">{presaleStats.totalSupply}</p>
             </div>
             <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a]">
               <p className="text-gray-400">Tokens Sold</p>
-              <p className="text-xl font-bold">650,000,000</p>
+              <p className="text-xl font-bold">{presaleStats.soldTokens}</p>
             </div>
             <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a]">
               <p className="text-gray-400">Initial Price</p>
-              <p className="text-xl font-bold">$0.001</p>
+              <p className="text-xl font-bold">{presaleStats.initialPrice}</p>
             </div>
             <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a]">
               <p className="text-gray-400">Launch Date</p>
-              <p className="text-xl font-bold">Soon !!</p>
+              <p className="text-xl font-bold">{presaleStats.launchDate}</p>
             </div>
           </div>
         </section>
@@ -95,7 +120,7 @@ function MainComponent() {
               <i className="fab fa-twitter text-xl"></i>
             </a>
             <a
-              href="https://t.me/+DjV9udmqSNAwNDMx"
+              href="https://t.me/+-rNpNrQ7uyo3N2Mx"
               className="text-gray-400 hover:text-[#ff3366]"
             >
               <i className="fab fa-telegram text-xl"></i>
