@@ -23,8 +23,12 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
       z-index: -1;
+    }
+    .video-background iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .overlay {
       position: absolute;
@@ -42,12 +46,14 @@
   </style>
 </head>
 <body class="min-h-screen bg-[#0a0a0a] text-white">
-  <!-- Video de Fondo (.mp4 desde Google Drive) -->
+  <!-- Video de Fondo (YouTube) -->
   <div class="video-background">
-    <video autoplay muted loop class="video-background">
-      <source src="https://drive.google.com/uc?export=download&id=1YDZ7T3UWO9dDA7RqLQFyLPukcXEuqvia" type="video/mp4">
-      Tu navegador no soporta el video.
-    </video>
+    <iframe
+      src="https://www.youtube.com/watch?v=HUD0_UF-dRc"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    ></iframe>
   </div>
   <!-- Overlay -->
   <div class="overlay"></div>
