@@ -50,12 +50,12 @@
       border-radius: 15px;
       background-color: #54a9eb; /* Color azul de Telegram */
       cursor: pointer;
-      padding: 12px 24px;
+      padding: 16px 48px; /* Ajustado para coincidir con Join Telegram (py-4 px-12) */
       color: #fff;
       font-weight: bold;
       text-decoration: none;
       transition: background-color 0.3s ease;
-      font-size: 1.25rem;
+      font-size: 20px; /* Ajustado para coincidir con text-xl (20px) */
     }
     .telegram-style-btn:hover {
       background-color: #468ed5; /* Un tono más oscuro al hacer hover */
@@ -100,6 +100,23 @@
     }
     .gallery-nav.next {
       right: 10px;
+    }
+    /* Estilo del botón de cerrar */
+    .gallery-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 0, 0, 0.7); /* Fondo rojo para destacar */
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+    .gallery-close:hover {
+      background: rgba(255, 0, 0, 1);
     }
   </style>
 </head>
@@ -152,7 +169,7 @@
           Welcome to Quantum Meme
         </h1>
         <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-          El token meme de próxima generación impulsado por tecnología cuántica e innovación impulsada por la comunidad
+          The next generation meme token powered by quantum technology and community-driven innovation
         </p>
       </section>
 
@@ -198,7 +215,7 @@
           </div>
           <div class="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a] text-center">
             <p class="text-gray-400">Launch Date</p>
-            <p class="text-xl font-bold">April 01,2025 17:00 UTC</p>
+            <p class="text-xl font-bold">Soon !!</p>
           </div>
         </div>
       </section>
@@ -206,11 +223,12 @@
       <!-- Sección de la Galería de Imágenes del Whitepaper -->
       <section id="whitepaper-gallery" class="container mx-auto px-4 py-12 text-center">
         <h2 class="text-2xl md:text-3xl font-bold mb-6">
-          
+          Whitepaper
         </h2>
         <div class="gallery">
+          <button class="gallery-close" onclick="hideGallery()">✖</button>
           <button class="gallery-nav prev" onclick="changeImage(-1)">❮</button>
-          <img id="gallery-image" src="https://raw.githubusercontent.com/a-iceo/Quantum/main/2.jpg" alt="Whitepaper Page">
+          <img id="gallery-image" src="https://raw.githubusercontent.com/a iceo/Quantum/main/2.jpg" alt="Whitepaper Page">
           <button class="gallery-nav next" onclick="changeImage(1)">❯</button>
         </div>
       </section>
@@ -239,13 +257,13 @@
   <!-- JavaScript para la Galería -->
   <script>
     const images = [
-      "https://raw.githubusercontent.com/a-iceo/Quantum/main/2.jpg",
-      "https://raw.githubusercontent.com/a-iceo/Quantum/main/3.jpg",
-      "https://raw.githubusercontent.com/a-iceo/Quantum/main/4.jpg",
-      "https://raw.githubusercontent.com/a-iceo/Quantum/main/5.jpg",
-      "https://raw.githubusercontent.com/a-iceo/Quantum/main/6.jpg",
-      "https://raw.githubusercontent.com/a-iceo/Quantum/main/7.jpg",
-      "https://raw.githubusercontent.com/a-iceo/Quantum/main/8.jpg"
+      "https://raw.githubusercontent.com/a iceo/Quantum/main/2.jpg",
+      "https://raw.githubusercontent.com/a iceo/Quantum/main/3.jpg",
+      "https://raw.githubusercontent.com/a iceo/Quantum/main/4.jpg",
+      "https://raw.githubusercontent.com/a iceo/Quantum/main/5.jpg",
+      "https://raw.githubusercontent.com/a iceo/Quantum/main/6.jpg",
+      "https://raw.githubusercontent.com/a iceo/Quantum/main/7.jpg",
+      "https://raw.githubusercontent.com/a iceo/Quantum/main/8.jpg"
     ];
     let currentImageIndex = 0;
 
@@ -253,6 +271,11 @@
       const gallery = document.querySelector('.gallery');
       gallery.classList.add('active');
       updateImage();
+    }
+
+    function hideGallery() {
+      const gallery = document.querySelector('.gallery');
+      gallery.classList.remove('active');
     }
 
     function updateImage() {
