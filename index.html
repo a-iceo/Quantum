@@ -43,6 +43,64 @@
       position: relative;
       z-index: 1;
     }
+    /* Estilo del botón al estilo de Telegram */
+    .telegram-style-btn {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 15px;
+      background-color: #54a9eb; /* Color azul de Telegram */
+      cursor: pointer;
+      padding: 12px 24px; /* Ajustado para que sea similar al tamaño del botón Join Telegram */
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      font-size: 1.25rem; /* Tamaño similar al botón Join Telegram */
+    }
+    .telegram-style-btn:hover {
+      background-color: #468ed5; /* Un tono más oscuro al hacer hover */
+    }
+    .telegram-style-btn i {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+    /* Estilo de la galería de imágenes */
+    .gallery {
+      display: none; /* Oculta por defecto, se muestra al hacer clic */
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      border: 1px solid #2a2a2a;
+    }
+    .gallery.active {
+      display: block;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 24px;
+      border-radius: 50%;
+    }
+    .gallery-nav.prev {
+      left: 10px;
+    }
+    .gallery-nav.next {
+      right: 10px;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-[#0a0a0a] text-white">
@@ -103,6 +161,15 @@
         <h2 class="text-2xl md:text-3xl font-bold mb-6">
           Join Our Community
         </h2>
+        <!-- Botón Whitepaper -->
+        <a
+          href="#whitepaper-gallery"
+          class="telegram-style-btn mb-4 inline-block"
+          onclick="showGallery()"
+        >
+          <i class="fas fa-file-alt"></i> Whitepaper
+        </a>
+        <!-- Botón Join Telegram -->
         <a
           href="https://t.me/+-rNpNrQ7uyo3N2Mx"
           target="_blank"
@@ -135,6 +202,18 @@
           </div>
         </div>
       </section>
+
+      <!-- Sección de la Galería de Imágenes del Whitepaper -->
+      <section id="whitepaper-gallery" class="container mx-auto px-4 py-12 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">
+          Whitepaper
+        </h2>
+        <div class="gallery">
+          <button class="gallery-nav prev" onclick="changeImage(-1)">❮</button>
+          <img id="gallery-image" src="https://drive.google.com/uc?id=1LfhVM-5bFlhQCLMuQdDreqQ7s3z_xkvZ" alt="Whitepaper Page">
+          <button class="gallery-nav next" onclick="changeImage(1)">❯</button>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
@@ -152,11 +231,44 @@
           >
             <i class="fab fa-telegram text-xl"></i>
           </a>
-         
-         
         </div>
       </div>
     </footer>
   </div>
+
+  <!-- JavaScript para la Galería -->
+  <script>
+    const images = [
+      "https://drive.google.com/uc?id=1LfhVM-5bFlhQCLMuQdDreqQ7s3z_xkvZ",
+      "https://drive.google.com/uc?id=15vH06-28GxZm3eN9ESyY-8eRTqa6e6N3",
+      "https://drive.google.com/uc?id=19DYXlfYLvn_rq4whKjIw9wpFGGtfFKgv",
+      "https://drive.google.com/uc?id=11PA4dUy1i4UJ8J2ri6yedNZPhjgptkSC",
+      "https://drive.google.com/uc?id=1_hISsiHpjrQ3jDYck8bpX7z0W850cRmY",
+      "https://drive.google.com/uc?id=1HAGOv4AztVTdrFi8LJOQIOOXk0vxACdV",
+      "https://drive.google.com/uc?id=1AQpbB-qq0-VitmgFOh6rprFDCJ2z9zgc"
+    ];
+    let currentImageIndex = 0;
+
+    function showGallery() {
+      const gallery = document.querySelector('.gallery');
+      gallery.classList.add('active');
+      updateImage();
+    }
+
+    function updateImage() {
+      const galleryImage = document.getElementById('gallery-image');
+      galleryImage.src = images[currentImageIndex];
+    }
+
+    function changeImage(direction) {
+      currentImageIndex += direction;
+      if (currentImageIndex < 0) {
+        currentImageIndex = images.length - 1;
+      } else if (currentImageIndex >= images.length) {
+        currentImageIndex = 0;
+      }
+      updateImage();
+    }
+  </script>
 </body>
 </html>
