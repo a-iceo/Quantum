@@ -50,12 +50,12 @@
       border-radius: 15px;
       background-color: #54a9eb; /* Color azul de Telegram */
       cursor: pointer;
-      padding: 12px 24px; /* Ajustado para que sea similar al tamaño del botón Join Telegram */
+      padding: 12px 24px;
       color: #fff;
       font-weight: bold;
       text-decoration: none;
       transition: background-color 0.3s ease;
-      font-size: 1.25rem; /* Tamaño similar al botón Join Telegram */
+      font-size: 1.25rem;
     }
     .telegram-style-btn:hover {
       background-color: #468ed5; /* Un tono más oscuro al hacer hover */
@@ -210,7 +210,7 @@
         </h2>
         <div class="gallery">
           <button class="gallery-nav prev" onclick="changeImage(-1)">❮</button>
-          <img id="gallery-image" src="https://drive.google.com/uc?id=1LfhVM-5bFlhQCLMuQdDreqQ7s3z_xkvZ" alt="Whitepaper Page">
+          <img id="gallery-image" src="https://raw.githubusercontent.com/a-iceo/Quantum/main/2.jpg" alt="Whitepaper Page">
           <button class="gallery-nav next" onclick="changeImage(1)">❯</button>
         </div>
       </section>
@@ -239,13 +239,13 @@
   <!-- JavaScript para la Galería -->
   <script>
     const images = [
-      "https://drive.google.com/uc?id=1LfhVM-5bFlhQCLMuQdDreqQ7s3z_xkvZ",
-      "https://drive.google.com/uc?id=15vH06-28GxZm3eN9ESyY-8eRTqa6e6N3",
-      "https://drive.google.com/uc?id=19DYXlfYLvn_rq4whKjIw9wpFGGtfFKgv",
-      "https://drive.google.com/uc?id=11PA4dUy1i4UJ8J2ri6yedNZPhjgptkSC",
-      "https://drive.google.com/uc?id=1_hISsiHpjrQ3jDYck8bpX7z0W850cRmY",
-      "https://drive.google.com/uc?id=1HAGOv4AztVTdrFi8LJOQIOOXk0vxACdV",
-      "https://drive.google.com/uc?id=1AQpbB-qq0-VitmgFOh6rprFDCJ2z9zgc"
+      "https://raw.githubusercontent.com/a-iceo/Quantum/main/2.jpg",
+      "https://raw.githubusercontent.com/a-iceo/Quantum/main/3.jpg",
+      "https://raw.githubusercontent.com/a-iceo/Quantum/main/4.jpg",
+      "https://raw.githubusercontent.com/a-iceo/Quantum/main/5.jpg",
+      "https://raw.githubusercontent.com/a-iceo/Quantum/main/6.jpg",
+      "https://raw.githubusercontent.com/a-iceo/Quantum/main/7.jpg",
+      "https://raw.githubusercontent.com/a-iceo/Quantum/main/8.jpg"
     ];
     let currentImageIndex = 0;
 
@@ -258,6 +258,7 @@
     function updateImage() {
       const galleryImage = document.getElementById('gallery-image');
       galleryImage.src = images[currentImageIndex];
+      console.log("Cargando imagen: " + images[currentImageIndex]); // Para depuración
     }
 
     function changeImage(direction) {
